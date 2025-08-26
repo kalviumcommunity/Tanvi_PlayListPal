@@ -1,7 +1,7 @@
 # 🎵 Playlist Pal: Your AI-Powered Spotify DJ
 
 Playlist Pal is a Python application that uses the power of Large Language Models (LLMs) to create curated Spotify playlists based on your mood, a description, or any creative idea you can think of. Instead of just matching genres, Playlist Pal understands the *vibe* of your request to find the perfect tracks.
-
+`   
 ## ✨ Core Features
 
 * **Natural Language Playlist Creation**: Simply describe the playlist you want (e.g., "A playlist for a rainy afternoon in a coffee shop" or "upbeat 80s rock for a workout").
