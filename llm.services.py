@@ -29,3 +29,16 @@ def get_playlist_details(user_prompt: str):
     
     full_prompt = f"{system_prompt}\n\nUser request: \"{user_prompt}\""
   
+  try:
+        response = model.generate_content(
+            full_prompt,
+            generation_config=genai.types.GenerationConfig(
+                
+                ## CONCEPT 3: Structured Output ##
+            
+                response_mime_type="application/json",
+                
+
+                
+            )
+        )
