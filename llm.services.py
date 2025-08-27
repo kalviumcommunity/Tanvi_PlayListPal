@@ -38,6 +38,10 @@ def get_playlist_details(user_prompt: str):
             
                 response_mime_type="application/json",
                 
+                ## CONCEPT 4: Temperature ##
+
+                
+                temperature=0.8
 
                 
             )
