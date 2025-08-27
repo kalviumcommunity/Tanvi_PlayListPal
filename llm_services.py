@@ -1,3 +1,5 @@
+
+
 import os
 import json
 import google.generativeai as genai
@@ -29,7 +31,8 @@ def get_playlist_details(user_prompt: str):
     
     full_prompt = f"{system_prompt}\n\nUser request: \"{user_prompt}\""
   
-  try:
+
+    try:
         response = model.generate_content(
             full_prompt,
             generation_config=genai.types.GenerationConfig(
@@ -38,11 +41,40 @@ def get_playlist_details(user_prompt: str):
             
                 response_mime_type="application/json",
                 
+
+                
                 ## CONCEPT 4: Temperature ##
 
                 
                 temperature=0.8
-
                 
             )
         )
+
+        
+        ## CONCEPT 5: 
+        
+        
+        print(f"Tokens used: {response.usage_metadata.total_token_count}")
+        
+
+        return json.loads(response.text)
+
+    except Exception as e:
+        print(f"An error occurred while calling the Gemini API: {e}")
+        return None
+
+
+if __name__ == '__main__':
+    #  input
+    idea = input("What kind of playlist are you in the mood for?\n> ")
+    
+    if idea:
+        # Call 
+        playlist_data = get_playlist_details(idea)
+        
+        if playlist_data:
+            print("\n--- AI Generated Playlist ---")
+            # print
+            print(json.dumps(playlist_data, indent=2))
+            print("---------------------------")
