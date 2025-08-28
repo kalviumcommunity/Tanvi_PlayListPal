@@ -5,3 +5,10 @@ python-dotenv
 spotipy
 chromadb
 numpy
+streamlit
+plotly
+pandas
+requests
+pillow
+streamlit-option-menu
+streamlit-lottie
