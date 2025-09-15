@@ -20,7 +20,7 @@ class SpotifyPlaylistManager:
     def __init__(self):
         self.client_id = os.getenv("SPOTIPY_CLIENT_ID")
         self.client_secret = os.getenv("SPOTIPY_CLIENT_SECRET")
-        self.redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI", "http://localhost:8888/callback")
+        self.redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI", "http://127.0.0.1:8888/callback")
         
         self.scope = "playlist-modify-public playlist-modify-private user-library-read user-top-read"
         
@@ -277,7 +277,7 @@ class SpotifyPlaylistManager:
 def get_spotify_auth_url() -> str:
     """Get Spotify authorization URL for manual authentication"""
     client_id = os.getenv("SPOTIPY_CLIENT_ID")
-    redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI", "http://localhost:8888/callback")
+    redirect_uri = os.getenv("SPOTIPY_REDIRECT_URI", "http://127.0.0.1:8888/callback")
     scope = "playlist-modify-public playlist-modify-private user-library-read user-top-read"
     
     auth_manager = SpotifyOAuth(
