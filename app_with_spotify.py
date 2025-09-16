@@ -69,7 +69,7 @@ if "route" not in st.session_state:
 # Env
 google_key = os.getenv("GOOGLE_API_KEY")
 spotify_id = os.getenv("SPOTIPY_CLIENT_ID")
-spotify_redirect = os.getenv("SPOTIPY_REDIRECT_URI", "http://127.0.0.1:8888/callback")
+spotify_redirect = os.getenv("SPOTIPY_REDIRECT_URI", "https://tanviplaylistpal.streamlit.app/callback")
 
 # ---------- Navbar (brand + tabs + search + avatar) ----------
 nb1, nb2 = st.columns([7,5])
