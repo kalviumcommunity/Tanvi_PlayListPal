@@ -228,8 +228,21 @@ elif st.session_state.route == "demos":
                     else:
                         with st.spinner("Creating playlist on Spotify..."):
                             res = create_complete_playlist_from_ai(m, data, int(max_tracks))
+                        st.write(f"Debug: Result type: {type(res)}, Result: {res}")
                         if res:
-                            st.balloons(); st.success(f"Created playlist: {res['playlist_name']}"); st.link_button("Open in Spotify", res["spotify_url"], use_container_width=True)
+                            st.balloons()
+                            st.success(f"Created playlist: {res['playlist_name']}")
+                            st.write(f"Tracks added: {res['track_count']}")
+                            st.link_button("Open in Spotify", res["spotify_url"], use_container_width=True)
+                            st.markdown("### Top Tracks")
+                            tracks_table = [
+                                {"Name": t["name"], "Artist(s)": t["artist"], "Popularity": t["popularity"], "Found via": t.get("search_term", "-")}
+                                for t in res["tracks"]
+                            ]
+                            st.dataframe(tracks_table, use_container_width=False, width=1200)
+                        else:
+                            st.error("Failed to create playlist on Spotify. Check the logs for details.")
+                            st.info("You can still use the AI-generated details above to create a playlist manually.")
 
 elif st.session_state.route == "analytics":
     st.subheader("Analytics")
