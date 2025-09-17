@@ -226,9 +226,17 @@ elif st.session_state.route == "demos":
                         st.warning("Authenticate with Spotify, then click Generate again.")
                         st.link_button("Authenticate Spotify", get_spotify_auth_url(), use_container_width=True)
                     else:
+                        st.info("🔍 Debug: Starting Spotify playlist creation...")
                         with st.spinner("Creating playlist on Spotify..."):
                             res = create_complete_playlist_from_ai(m, data, int(max_tracks))
-                        st.write(f"Debug: Result type: {type(res)}, Result: {res}")
+                        
+                        # Debug output
+                        st.write(f"🔍 Debug: Result type: {type(res)}")
+                        if res:
+                            st.write(f"🔍 Debug: Success! Playlist created: {res.get('playlist_name', 'Unknown')}")
+                        else:
+                            st.write("🔍 Debug: Result is None - playlist creation failed")
+                        
                         if res:
                             st.balloons()
                             st.success(f"Created playlist: {res['playlist_name']}")
